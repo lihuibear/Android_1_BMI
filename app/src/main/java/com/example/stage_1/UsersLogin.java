@@ -66,8 +66,8 @@ public class UsersLogin extends AppCompatActivity implements View.OnClickListene
             case R.id.login_button:
                 if (validateCredentials()) {
                     Intent intent1 = new Intent(UsersLogin.this, MainActivity.class);
-                    /**
-                     * 将用户名传递到下一个活动
+                    /*
+                      将用户名传递到下一个活动
                      */
                     intent1.putExtra("username", usernameEditText.getText().toString().trim());
                     startActivity(intent1);

@@ -18,12 +18,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private TextView levelTextView;
     private ImageView imageView;
 
+    /**
+     * 首次创建活动时调用。
+     *
+     * @param savedInstanceState 如果活动被系统销毁并重新创建，则此Bundle包含在{@link #onSaveInstanceState}中保存的任何数据。
+     *                           如果活动是首次创建，则此Bundle为null。
+     */
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // 初始化视图
         weightEditText = findViewById(R.id.weightEditText);
         heightEditText = findViewById(R.id.heightEditText);
         resultTextView = findViewById(R.id.resultTextView);
@@ -35,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         calculateButton.setOnClickListener(this);
 
-        // 从 Intent 中获取用户名
+
         String username = getIntent().getStringExtra("username");
         if (username != null) {
             usernameTextView.setText("用户: " + username);
@@ -46,17 +52,27 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+
+    /**
+     * 获取用户的name，并根据用户名设置头像。
+     *
+     * @param username
+     */
+
     private void setAvatarBasedOnUsername(String username) {
 
         int usernameavatar = getResources().getIdentifier(username, "drawable", getPackageName());
 
         if (usernameavatar != 0) {
-            imageView.setImageResource(usernameavatar); // 根据用户名加载头像
+            imageView.setImageResource(usernameavatar);
         } else {
-            imageView.setImageResource(R.drawable.avatar); // 如果找不到，使用默认头像
+            imageView.setImageResource(R.drawable.avatar);
         }
     }
 
+    /**
+     * 根据用户的体重和身高计算BMI，并根据BMI值判断等级。
+     */
     private void calculateBMI() {
         String weightStr = weightEditText.getText().toString();
         String heightStr = heightEditText.getText().toString();
@@ -92,6 +108,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
+    /**
+     * 处理按钮点击事件。
+     *
+     * @param v 被点击的视图。
+     */
     @Override
     public void onClick(View v) {
         calculateBMI();

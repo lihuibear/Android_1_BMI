@@ -15,7 +15,7 @@ public class UserRegister extends AppCompatActivity implements View.OnClickListe
 
     private EditText usernameEditText;
     private RadioGroup genderRadioGroup;
-    private RadioGroup cityRadioGroup; // 新增城市选择的 RadioGroup
+    private RadioGroup cityRadioGroup;
     private Button register_button;
 
     private String message;
