@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UsersLogin extends AppCompatActivity implements View.OnClickListener {
 
-    // 设置可用的用户名和密码数组
+
     private final String[][] validCredentials = {
             {"lh", "057"},
             {"ljj", "058"},
