@@ -14,7 +14,7 @@
         android:layout_height="100dp"
         android:layout_gravity="center"
         android:scaleType="centerCrop"
-        android:src="@drawable/me" />
+        android:src="@drawable/avatar" />
 
     <EditText
         android:id="@+id/username"
