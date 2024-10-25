@@ -13,9 +13,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class UsersLogin extends AppCompatActivity implements View.OnClickListener {
 
-    // 设置正确的用户名和密码
-    private final String correctUsername = "lh";
-    private final String correctPassword = "057";
+    // 设置可用的用户名和密码数组
+    private final String[][] validCredentials = {
+            {"lh", "057"},
+            {"ljj", "058"},
+            {"ljx", "059"},
+            {"lrq", "061"},
+    };
+
     private EditText usernameEditText;
     private EditText passwordEditText;
     private Button login_button;
@@ -44,12 +49,15 @@ public class UsersLogin extends AppCompatActivity implements View.OnClickListene
             return false;
         }
 
-        if (!username.equals(correctUsername) || !password.equals(correctPassword)) {
-            Toast.makeText(this, "用户名或密码输入有误！", Toast.LENGTH_SHORT).show();
-            return false;
+        // 检查是否在数组中有匹配的用户名和密码对
+        for (String[] credential : validCredentials) {
+            if (username.equals(credential[0]) && password.equals(credential[1])) {
+                return true;
+            }
         }
 
-        return true;
+        Toast.makeText(this, "用户名或密码输入有误！", Toast.LENGTH_SHORT).show();
+        return false;
     }
 
     @Override
@@ -61,7 +69,6 @@ public class UsersLogin extends AppCompatActivity implements View.OnClickListene
                     startActivity(intent1);
                 }
                 break;
-
             case R.id.to_register:
                 Intent intent2 = new Intent(UsersLogin.this, UserRegister.class);
                 startActivity(intent2);
